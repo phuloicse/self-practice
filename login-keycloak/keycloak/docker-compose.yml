@@ -32,11 +32,11 @@ services:
       KC_HEALTH_ENABLED: true
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
-    # command: start-dev
+
+      KEYCLOAK_EXTRA_ARGS: "-Dkeycloak.import=/opt/keycloak/data/import/"
+    command: start-dev
     volumes:
-      - ./config.json:/opt/jboss/keycloak/imports/config.json
-    command: 
-      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/imports/config.json"
+      - ./keycloak/imports:/opt/keycloak/data/import
     depends_on:
       - postgres-keycloak
     ports:
