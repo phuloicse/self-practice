@@ -1,0 +1,11 @@
+# Dockerfile
+FROM debian:bullseye
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y postfix mailutils && \
+    apt-get clean
+
+COPY fake.sh /fake.sh
+RUN chmod +x /fake.sh
+
+CMD ["/fake.sh"]

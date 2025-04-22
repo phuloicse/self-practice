@@ -1,0 +1,6 @@
+From: myapp@Vegas.com
+To: you@example.com
+Subject: Hello from Vegas!
+Content-Type: text/plain; charset=utf-8
+
+This is a fake email sent from myapp@Vegas.com.
