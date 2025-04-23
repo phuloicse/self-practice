@@ -1,20 +1,21 @@
 package main
 
 import (
-	"jwt-app/handler"
-	"jwt-app/middleware"
+	handler "jwt-app/handler"
+	middleware "jwt-app/middleware"
 
-	"github.com/gin-gonic/gin"
+	gin "github.com/gin-gonic/gin"
 )
 
 func main() {
-	r := gin.Default()
 
-	r.POST("/login", handler.LoginHandler)
+	app := gin.Default()
 
-	protected := r.Group("/protected")
+	app.POST("/login", handler.LoginHandler)
+
+	protected := app.Group("/protected")
 	protected.Use(middleware.JWTAuthMiddleware())
 	protected.GET("/hello", handler.ProtectedHandler)
 
-	r.Run(":8080")
+	app.Run(":8080")
 }

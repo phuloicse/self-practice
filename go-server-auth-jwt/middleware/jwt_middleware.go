@@ -1,29 +1,29 @@
 package middleware
 
 import (
-	"jwt-app/utils"
+	utils "jwt-app/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func JWTAuthMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		tokenString := c.GetHeader("Authorization")
+	return func(requestContext *gin.Context) {
+		tokenString := requestContext.GetHeader("Authorization")
 		if tokenString == "" {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Missing token"})
-			c.Abort()
+			requestContext.JSON(http.StatusUnauthorized, gin.H{"error": "Missing token"})
+			requestContext.Abort()
 			return
 		}
 
 		claims, err := utils.ValidateToken(tokenString)
 		if err != nil {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
-			c.Abort()
+			requestContext.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
+			requestContext.Abort()
 			return
 		}
 
-		c.Set("username", claims.Subject)
-		c.Next()
+		requestContext.Set("username", claims.Subject)
+		requestContext.Next()
 	}
 }

@@ -2,13 +2,10 @@ package service
 
 import (
 	"errors"
-	"jwt-app/model"
+	config "jwt-app/config"
 )
 
-var mockUser = model.User{
-	Username: "loiluong",
-	Password: "1234",
-}
+var mockUser = config.User
 
 func Authenticate(username, password string) error {
 	if username == mockUser.Username && password == mockUser.Password {
