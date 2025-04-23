@@ -48,15 +48,3 @@ func init() {
 
 var JWTConfig model.JWTInfo
 var User model.User
-
-// func LoadConfig() {
-// 	JWTConfig = model.JWTInfo{
-// 		SecretKey:   GetEnv("SECRET_KEY", "default_secret_key"),
-// 		ExpiredTime: GetEnvAsInt("EXPIRED_TIME", 3600),
-// 	}
-
-// 	User = model.User{
-// 		Username: GetEnv("USERNAME", "loi"),
-// 		Password: GetEnv("PASSWORD", "12"),
-// 	}
-// }
