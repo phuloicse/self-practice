@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package serviceA;
+
+service ServiceB {
+  rpc HandleRequest (Request) returns (Response);
+}
+
+message Request {
+  string user_id = 1;
+  string sender_pod = 2;
+}
+
+message Response {
+  string message = 1;
+}

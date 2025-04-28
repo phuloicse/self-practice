@@ -10,7 +10,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-
 func GetEnv(key, defaultValue string) string {
 	if value, exists := os.LookupEnv(key); exists {
 		return value
@@ -26,7 +25,6 @@ func GetEnvAsInt(key string, defaultValue int) int {
 	}
 	return defaultValue
 }
-
 
 func init() {
 	err := godotenv.Load()
