@@ -38,9 +38,20 @@ func init() {
 	}
 
 	User = model.User{
-		Username: GetEnv("USERNAME", "loi"),
-		Password: GetEnv("PASSWORD", "12"),
+		Username: GetEnv("LOGIN_USERNAME", "loi"),
+		Password: GetEnv("LOGIN_PASSWORD", "12"),
 	}
+
+	log.Println("JWT Secret Key:", JWTConfig.SecretKey)
+	log.Println("JWT Expired Time:", JWTConfig.ExpiredTime)
+	log.Println("User Username:", User.Username)
+	log.Println("User Password:", User.Password)
+	log.Println("Environment variables loaded successfully.")	
+
+	//  debug env in os
+	// for _, e := range os.Environ() {
+    // 	log.Println(e)
+	// }
 
 }
 
